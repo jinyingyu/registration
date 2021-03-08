@@ -3,13 +3,14 @@ package com.cartrust.registration;
 import java.util.List;
 
 public class RegistrationService {
-    private RegistrationRepository repo;
+    private final RegistrationRepository repo = new RegistrationRepository();
 
     public List<VehicleRegistration> getAllRegistrations() {
-        return  null;
+        return  repo.findAll();
     }
 
     public VehicleRegistration register(VehicleRegistration registration) {
-        return null;
+        if (!registration.isDocumentOK()) return null;
+        return repo.save(registration);
     }
 }
