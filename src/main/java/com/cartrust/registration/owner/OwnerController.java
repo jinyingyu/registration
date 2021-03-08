@@ -15,14 +15,14 @@ public class OwnerController {
     private final OwnerService service = new OwnerService();
 
     @GetMapping("/owners/all")
-    public List<Owner> getCurrentOwners() {
+    public List<Owner> getAllOwners() {
         return service.getAllOwners();
     }
 
     @PostMapping("/owners/register")
-    public ResponseEntity addOwner(
+    public ResponseEntity register(
             @RequestBody Owner owner) {
-        Owner savedOwner = service.addOwner(owner);
+        Owner savedOwner = service.register(owner);
         return ResponseEntity
                 .created(URI
                         .create(String.format("/owner/%s", owner.getId())))

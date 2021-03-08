@@ -11,7 +11,7 @@ public class OwnerService {
         return owners.findAll();
     }
 
-    public Owner addOwner(Owner owner) {
+    public Owner register(Owner owner) {
         return owners.save(owner);
     }
 
