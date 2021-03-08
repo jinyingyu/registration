@@ -11,10 +11,12 @@ public class OwnerRepository {
         repo = new ArrayList<>();
         Owner aMan = new Owner();
         aMan.setName("John Doe");
+        aMan.setId(Integer.toString(repo.size()));
         repo.add(aMan);
 
         Owner aWoman = new Owner();
         aWoman.setName("Jane Doe");
+        aWoman.setId(Integer.toString(repo.size()));
         repo.add(aWoman);
 
     }
