@@ -2,6 +2,7 @@ package com.cartrust.registration;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 public class VehicleRegistration {
     private String registrationID;
 
