@@ -36,4 +36,14 @@ public class VehicleRegistration {
     public void setRegistrationID(String registrationID) {
         this.registrationID = registrationID;
     }
+
+    public VehicleRegistration(){
+    }
+    public VehicleRegistration(String registrationID, String vehicleID, String ownerID){
+        this.registrationID = registrationID;
+        this.vehicleID = vehicleID;
+        this.ownerID = ownerID;
+    }
+
+
 }
