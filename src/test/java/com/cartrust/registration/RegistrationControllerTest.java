@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @WebFluxTest(controllers = {RegistrationController.class})
 class RegistrationControllerTest {
@@ -41,6 +42,17 @@ class RegistrationControllerTest {
     }
 
     @Test
-    void register() {
+    void register(@Autowired WebTestClient client) {
+        VehicleRegistration aReg = new VehicleRegistration("3","fiat", "Alexander Doe");
+        final VehicleRegistration responsedReg = client.post()
+                .uri("/registrations/register")
+                .bodyValue(aReg)
+                .exchange()
+                .expectStatus().isCreated()
+                .expectBody(VehicleRegistration.class)
+                .returnResult()
+                .getResponseBody();
+        assertTrue(aReg.getVehicleID().equals(responsedReg.getVehicleID()));
+
     }
 }
