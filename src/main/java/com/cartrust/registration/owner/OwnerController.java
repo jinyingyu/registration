@@ -25,7 +25,7 @@ public class OwnerController {
         Owner savedOwner = service.register(owner);
         return ResponseEntity
                 .created(URI
-                        .create(String.format("/owner/%s", owner.getId())))
+                        .create(String.format("/owners/%s", owner.getId())))
                 .body(savedOwner);
     }
 
