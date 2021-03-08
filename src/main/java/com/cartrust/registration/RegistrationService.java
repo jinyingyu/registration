@@ -10,6 +10,7 @@ public class RegistrationService {
     }
 
     public VehicleRegistration register(VehicleRegistration registration) {
+        if (!registration.isDocumentOK()) return null;
         return repo.save(registration);
     }
 }

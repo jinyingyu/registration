@@ -28,6 +28,16 @@ public class VehicleRegistration {
     @JsonProperty("ownerID")
     private String ownerID;
 
+    public boolean isDocumentOK() {
+        return isDocumentOK;
+    }
+
+    public void setDocumentOK(boolean documentOK) {
+        isDocumentOK = documentOK;
+    }
+
+    @JsonProperty("isDocumentOK")
+    private boolean isDocumentOK = false;
 
     public String getRegistrationID() {
         return registrationID;

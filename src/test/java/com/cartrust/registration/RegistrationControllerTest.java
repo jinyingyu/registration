@@ -9,8 +9,7 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @WebFluxTest(controllers = {RegistrationController.class})
 class RegistrationControllerTest {
@@ -37,13 +36,13 @@ class RegistrationControllerTest {
                 .getResponseBody();
         assertEquals(regs.get(1).getOwnerID(), responsedRegs.get(1).getOwnerID());
         assertEquals(regs.get(1).getVehicleID(), responsedRegs.get(1).getVehicleID());
-        assertEquals(regs.size(), responsedRegs.size());
 
     }
 
     @Test
-    void register(@Autowired WebTestClient client) {
+    void register_ok(@Autowired WebTestClient client) {
         VehicleRegistration aReg = new VehicleRegistration("3","fiat", "Alexander Doe");
+        aReg.setDocumentOK(true);
         final VehicleRegistration responsedReg = client.post()
                 .uri("/registrations/register")
                 .bodyValue(aReg)
@@ -54,5 +53,19 @@ class RegistrationControllerTest {
                 .getResponseBody();
         assertTrue(aReg.getVehicleID().equals(responsedReg.getVehicleID()));
 
+    }
+
+    @Test
+    void register_NotOK(@Autowired WebTestClient client) {
+        VehicleRegistration aReg = new VehicleRegistration("3","fiat", "Alexander Doe");
+        final VehicleRegistration responsedReg = client.post()
+                .uri("/registrations/register")
+                .bodyValue(aReg)
+                .exchange()
+                .expectStatus().isBadRequest()
+                .expectBody(VehicleRegistration.class)
+                .returnResult()
+                .getResponseBody();
+        assertFalse(responsedReg.isDocumentOK());
     }
 }
