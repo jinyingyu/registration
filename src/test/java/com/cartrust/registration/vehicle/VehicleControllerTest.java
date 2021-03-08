@@ -34,7 +34,7 @@ class VehicleControllerTest {
                 .expectBodyList(Vehicle.class)
                 .returnResult()
                 .getResponseBody();
-        assertEquals(vehicles.get(1).getCarID(), responsedVehs.get(1).getCarID());
+        assertEquals(vehicles.get(1).getVehicleID(), responsedVehs.get(1).getVehicleID());
         assertEquals(vehicles.size(), responsedVehs.size());
 
     }
@@ -50,7 +50,7 @@ class VehicleControllerTest {
                 .expectBody(Vehicle.class)
                 .returnResult()
                 .getResponseBody();
-        assertTrue(vehicle.getCarID().equals(responsedReg.getCarID()));
+        assertTrue(vehicle.getVehicleID().equals(responsedReg.getVehicleID()));
 
     }
 }

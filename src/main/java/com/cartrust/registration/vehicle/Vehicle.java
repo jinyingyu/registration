@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 public class Vehicle {
-    public Vehicle(String carID) {
-        this.carID = carID;
+    public Vehicle(String vehicleID) {
+        this.vehicleID = vehicleID;
     }
 
     public Vehicle() {
@@ -21,12 +21,12 @@ public class Vehicle {
         this.id = id;
     }
 
-    public String getCarID() {
-        return carID;
+    public String getVehicleID() {
+        return vehicleID;
     }
 
-    public void setCarID(String carID) {
-        this.carID = carID;
+    public void setVehicleID(String vehicleID) {
+        this.vehicleID = vehicleID;
     }
 
     public String getModel() {
@@ -38,8 +38,8 @@ public class Vehicle {
     }
 
     private String id;
-    @JsonProperty("carID")
-    private String carID;
+    @JsonProperty("vehicleID")
+    private String vehicleID;
     @JsonProperty("model")
     private String model;
 
